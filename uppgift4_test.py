@@ -7,6 +7,13 @@ from uppgift4_program import Systembolaget
 @pytest.mark.usefixtures("setup")
 class TestSystembolaget:
 
+    def test_email(self):
+        login1 = Systembolaget(self.driver)
+        login1.find_item("Grupp.1.Python@gmail.com")
+        email = self.driver.find_element(By.NAME, "Username")
+        email = email.text
+        assert "Grupp.1.Python@gmail.com" in email
+
     def test_demo(self):
         sku1 = Systembolaget(self.driver)
         sku1.find_item("2722")
