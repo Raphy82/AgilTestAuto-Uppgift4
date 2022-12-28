@@ -15,6 +15,8 @@ def setup(request):
     driver.find_element(By.XPATH, "//*[@id='__next']/div[1]/div[2]/div/section/div/div/div[4]/div/div[2]/a").click()
     '# Click on "Accepterar alla kakor"'
     driver.find_element(By.XPATH, "//*[@id='modalId']/div[2]/div/button[2]").click()
+    '# Click on "Logga in"'
+    driver.find_element(By.XPATH, "//*[contains(text(), 'Logga in')]").click()
     request.cls.driver = driver
     yield
     driver.close()
