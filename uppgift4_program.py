@@ -21,7 +21,7 @@ class Systembolaget:
         logins = self.driver.find_element(By.XPATH, "//input[@type='text']").send_keys("Grupp.1.Python@gmail.com")
         logins.send_keys(Keys.ENTER)
 
-    '#Find item on the website'
+'   '#Find item on the website'
     def find_item(self, skus):
         sku = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
         sku.send_keys(skus)
@@ -29,7 +29,17 @@ class Systembolaget:
         self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']")
         sku.click()
 
+    def search_for_product(self, product_name):
+        search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
+        search_input.send_keys(product_name)
+        self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']")
+        search_input.send_keys(Keys.ENTER)
+
+
+
+
     '#From product page, add item to basket'
     def add_item(self):
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Lägg i varukorg']").click()
+
 
