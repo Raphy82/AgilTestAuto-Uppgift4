@@ -4,7 +4,6 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-import time
 
 '# Call the setup fixture'
 @pytest.mark.usefixtures("setup")
@@ -17,14 +16,12 @@ class Systembolaget:
         login = self.driver.find_element(By.NAME, "Username")
         login.send_keys(logins)
         login.send_keys(Keys.ENTER)
-        time.sleep(1)
 
     '#Login to the website, insert password'
     def login_passwd(self, names):
         name = self.driver.find_element(By.NAME, "Password")
         name.send_keys(names)
         name.send_keys(Keys.ENTER)
-        time.sleep(1)
 
     '#Login to the website, click on login button'
     def login_button(self):
@@ -32,7 +29,7 @@ class Systembolaget:
         checkbox.click()
 
     '#Find item on the website'
-     def find_item(self, skus):
+    def find_item(self, skus):
          sku = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
          sku.send_keys(skus)
          sku.send_keys(Keys.ENTER)
@@ -40,6 +37,6 @@ class Systembolaget:
          sku.click()
 
     '#From product page, add item to basket'
-     def add_item(self):
+    def add_item(self):
          self.driver.find_element(By.XPATH, "//button[normalize-space()='Lägg i varukorg']").click()
 
