@@ -55,3 +55,4 @@ class TestSystembolaget:
         tot_pris = self.driver.find_element(By.XPATH, "//p[normalize-space()='111:90']")
         tot_pris = tot_pris.text
         assert "111:90" in tot_pris
+
