@@ -1,9 +1,11 @@
 import pytest
 import re
 import requests
+from uppgift4_program import Systembolaget
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
-from uppgift4_program import Systembolaget
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 '# Call the setup fixture'
@@ -55,6 +57,13 @@ class TestSystembolaget:
     def test_add_wine_to_cart(self):
         add_home_delivery_button = self.driver.find_element(By.XPATH, "//div[@class='css-1krmxyt e3whs8q0']")
         add_home_delivery_button.click()
+        # Wait for the postal code field to be visible
+        postal_code_field = WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Ditt postnummer']"))
+        )
+        postal_code_field.send_keys("12131")
+
+
 
 
 
