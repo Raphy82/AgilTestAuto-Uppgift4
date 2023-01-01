@@ -2,6 +2,7 @@ import pytest
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from uppgift4_program import Systembolaget
+import re
 
 '# Call the setup fixture'
 @pytest.mark.usefixtures("setup")
@@ -26,10 +27,24 @@ class TestSystembolaget:
         search_input.search_for_product("11903")
         product_nr = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']").text
         assert "11903" in product_nr
+
     def test_product_name(self):
         product_name = self.driver.find_element(By.XPATH,
                                                 "//div[@class='css-dahppd e3whs8q0']//p[@class='css-1rw23u7 enp2lf70']").text
         assert product_name == "Casa Emma"
+
+    def test_product_price(self):
+        product_price = self.driver.find_element(By.XPATH, "//div[@class='css-1df247k e3whs8q0']").text
+
+        # En 'Regular expression operations' används för att plocka ut endast priset
+        price_match = re.search(r'\d+:\d+', product_price)
+        # Kontrollera att matchningen inte är None
+        assert price_match is not None
+        # Plocka ut matchningen och konvertera till en float
+        price = float(price_match.group().replace(':', '.'))
+        assert price in [89.0, 118.67]
+
+
     def test_demo(self):
         sku1 = Systembolaget(self.driver)
         sku1.find_item("11903")
