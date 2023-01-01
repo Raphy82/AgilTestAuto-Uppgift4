@@ -26,7 +26,10 @@ class TestSystembolaget:
         search_input.search_for_product("11903")
         product_nr = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']").text
         assert "11903" in product_nr
-
+    def test_product_name(self):
+        product_name = self.driver.find_element(By.XPATH,
+                                                "//div[@class='css-dahppd e3whs8q0']//p[@class='css-1rw23u7 enp2lf70']").text
+        assert product_name == "Casa Emma"
     def test_demo(self):
         sku1 = Systembolaget(self.driver)
         sku1.find_item("11903")
