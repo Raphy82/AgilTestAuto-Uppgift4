@@ -63,6 +63,11 @@ class TestSystembolaget:
         )
         postal_code_field.send_keys("12131")
 
+        add_to_cart_button = self.driver.find_element(By.XPATH, "//button[@class='css-1fej1r5 ev9wvac0']")
+        add_to_cart_button.click()
+
+
+
 
 
 
