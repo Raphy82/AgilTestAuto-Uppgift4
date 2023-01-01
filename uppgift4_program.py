@@ -11,35 +11,17 @@ class Systembolaget:
     def __init__(self, driver):
         self.driver = driver
 
-    '#Click on logga in button on the upper right corner'
-    def login_box(self):
-        login_box = self.driver.find_element(By.XPATH, "//button[normalize-space()='Logga in']")
-        login_box.click()
-
-    '#Login to the website, insert email'
-    def login_email(self):
-        logins = self.driver.find_element(By.XPATH, "//input[@type='text']").send_keys("Grupp.1.Python@gmail.com")
-        logins.send_keys(Keys.ENTER)
-
-'   '#Find item on the website'
+    '#Find item on the website, open product page'
     def find_item(self, skus):
         sku = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
         sku.send_keys(skus)
         sku.send_keys(Keys.ENTER)
-        self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']")
-        sku.click()
-
-    def search_for_product(self, product_name):
-        search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
-        search_input.send_keys(product_name)
-        self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']")
-        search_input.send_keys(Keys.ENTER)
-
-
-
+        self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']").click()
 
     '#From product page, add item to basket'
-    def add_item(self):
-        self.driver.find_element(By.XPATH, "//button[normalize-space()='Lägg i varukorg']").click()
-
+    def add_item(self, buts):
+        self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/button[2]").click()
+        but = self.driver.find_element(By.XPATH, "//*[@id='modalId']/div/div/form/label/div/input")
+        but.send_keys(buts)
+        self.driver.find_element(By.XPATH, "//*[@id='react-autowhatever-1-section-0-item-0']/div/span/strong").click()
 
