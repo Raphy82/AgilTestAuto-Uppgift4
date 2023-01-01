@@ -66,11 +66,14 @@ class TestSystembolaget:
         add_to_cart_button = self.driver.find_element(By.XPATH, "//button[@class='css-1fej1r5 ev9wvac0']")
         add_to_cart_button.click()
 
+        postnummer_button = self.driver.find_element(By.XPATH, "//div[@class='false emejrsp0 css-1naf3kp e1uubc4q0']")
+        postnummer_button.click()
 
+        add_home_delivery = self.driver.find_element(By.XPATH, "//button[@class='css-1fej1r5 ev9wvac0']")
+        add_home_delivery.click()
 
-
-
-
+        cart_icon = self.driver.find_element(By.XPATH, "//p[@class='css-l7e9hy enp2lf70']")
+        assert cart_icon.text == "1"
 
     def test_demo(self):
         sku1 = Systembolaget(self.driver)
@@ -78,8 +81,6 @@ class TestSystembolaget:
         demoartikel = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']")
         demoartikel = demoartikel.text
         assert "11903" in demoartikel
-
-
 
     def test_cart(self):
         self.driver.find_element(By.XPATH, "//body/div[@id='__next']/header/div/div/div/div/div/button[1]").click()
