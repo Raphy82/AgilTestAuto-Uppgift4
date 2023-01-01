@@ -21,6 +21,12 @@ class TestSystembolaget:
         password = password.text
         assert "Grupp1Python" in password
 
+    def test_product_nr(self):
+        search_input = Systembolaget(self.driver)
+        search_input.search_for_product("11903")
+        product_nr = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']").text
+        assert "11903" in product_nr
+
     def test_demo(self):
         sku1 = Systembolaget(self.driver)
         sku1.find_item("11903")
