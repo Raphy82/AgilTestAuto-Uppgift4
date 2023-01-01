@@ -52,6 +52,11 @@ class TestSystembolaget:
         response = requests.get(image_src)
         assert response.status_code == 200
 
+    def test_add_wine_to_cart(self):
+        add_home_delivery_button = self.driver.find_element(By.XPATH, "//div[@class='css-1krmxyt e3whs8q0']")
+        add_home_delivery_button.click()
+
+
 
     def test_demo(self):
         sku1 = Systembolaget(self.driver)
