@@ -1,8 +1,10 @@
 import pytest
+import re
+import requests
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from uppgift4_program import Systembolaget
-import re
+
 
 '# Call the setup fixture'
 @pytest.mark.usefixtures("setup")
@@ -43,6 +45,12 @@ class TestSystembolaget:
         # Plocka ut matchningen och konvertera till en float
         price = float(price_match.group().replace(':', '.'))
         assert price in [89.0, 118.67]
+
+    def test_product_image_loads_correctly(self):
+        image_element = self.driver.find_element(By.XPATH, "//img[@class='css-0 e53gfhp1']")
+        image_src = image_element.get_attribute("src")
+        response = requests.get(image_src)
+        assert response.status_code == 200
 
 
     def test_demo(self):
