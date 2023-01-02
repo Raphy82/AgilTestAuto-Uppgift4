@@ -12,31 +12,29 @@ class Systembolaget:
         self.driver = driver
 
     '#Login to the website, insert email'
-    def login_email(self, logins):
-        login = self.driver.find_element(By.NAME, "Username")
-        login.send_keys(logins)
-        login.send_keys(Keys.ENTER)
+    def login_email(self):
+        email_field = self.driver.find_element(By.ID, "email-input")
+        email_field.send_keys("Grupp.1.Python@gmail.com")
 
     '#Login to the website, insert password'
-    def login_passwd(self, names):
-        name = self.driver.find_element(By.NAME, "Password")
-        name.send_keys(names)
-        name.send_keys(Keys.ENTER)
+    def login_passwd(self):
+        password_field = self.driver.find_element(By.NAME, "Password")
+        password_field.send_keys("Grupp1Python")
 
     '#Login to the website, click on login button'
     def login_button(self):
-        checkbox = self.driver.find_element(By.XPATH, "//button[@class='btn btn-primary button-submit']")
-        checkbox.click()
+        login_button = self.driver.find_element(By.XPATH, "//button[@class='btn btn-primary button-submit']")
+        login_button.click()
 
     '#Find item on the website'
     def find_item(self, skus):
-         sku = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
-         sku.send_keys(skus)
-         sku.send_keys(Keys.ENTER)
-         self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']")
-         sku.click()
+        sku = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
+        sku.send_keys(skus)
+        sku.send_keys(Keys.ENTER)
+        self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']")
+        sku.click()
 
     '#From product page, add item to basket'
     def add_item(self):
-         self.driver.find_element(By.XPATH, "//button[normalize-space()='Lägg i varukorg']").click()
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Lägg i varukorg']").click()
 
