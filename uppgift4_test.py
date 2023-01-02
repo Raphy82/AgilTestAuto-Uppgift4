@@ -91,7 +91,13 @@ class TestSystembolaget:
         print(articel)
         assert "13023" in articel
 
-
+    def test_alcohol_content(self):
+        alcohol = Systembolaget(self.driver)
+        alcohol.content = ("4%")
+        procent = self.driver.find_element(By.XPATH, "div[class ='css-1to8dtu e3whs8q0'] p:nth - child(3)")
+        procent = procent.text
+        print(procent)
+        assert "4%" in procent
 
     def test_demo(self):
         sku1 = Systembolaget(self.driver)
