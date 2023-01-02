@@ -75,6 +75,24 @@ class TestSystembolaget:
         cart_icon = self.driver.find_element(By.XPATH, "//p[@class='css-l7e9hy enp2lf70']")
         assert cart_icon.text == "1"
 
+    def test_search_name(self):
+        product = Systembolaget(self.driver)
+        product.byname("Maison Sassy  Cidre Organic")
+        name = self.driver.find_element(By.XPATH, " ")
+        name = name.text
+        print(name)
+        assert "Maison Sassy  Cidre Organic" in name
+
+    def test_search_product_nr(self):
+        product = Systembolaget(self.driver)
+        product.bynr("13023")
+        articel = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']")
+        articel = articel.text
+        print(articel)
+        assert "13023" in articel
+
+
+
     def test_demo(self):
         sku1 = Systembolaget(self.driver)
         sku1.find_item("11903")
