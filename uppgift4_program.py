@@ -25,20 +25,9 @@ class Systembolaget:
         name.send_keys(names)
         name.send_keys(Keys.ENTER)
 
-    '#Login to the website, click on login button'
-    def login_button(self):
-        checkbox = self.driver.find_element(By.XPATH, "//button[@class='btn btn-primary button-submit']")
-        checkbox.click()
-
-    '#Click on "Sofia"'
-    def user_button(self):
-        self.driver.find_element(By.XPATH, "//button[@color='black']//p[contains(text(),'Sofia')]").click()
-        self.driver.find_element(By.XPATH, "// p[normalize - space() = 'Kontouppgifter']").click()
-
     '#Logout from website'
     def logout_button(self):
-        self.driver.find_element(By.XPATH, "//*[contains(text(), 'Sofia')]").click()
-        self.driver.find_element(By.XPATH, "//button[@//*[@id='__next']/header/div/div/div/div[2]/div[2]/div/a[7]/p]").click()
+        self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div/div/a[7]/span").click()
 
     '#Find item on the website & open product page'
     def search_for_product(self, search):
