@@ -35,14 +35,6 @@ class Systembolaget:
         search_input.send_keys(Keys.ENTER)
         self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']").click()
 
-    '#Find item on the website, open product page'
-    def find_item(self, skus):
-        sku = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
-        sku.send_keys(skus)
-        sku.send_keys(Keys.ENTER)
-        self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']").click()
-
-
     '#From product page, add item to basket'
     def add_item(self, buts):
         self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/button[2]").click()
