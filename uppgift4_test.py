@@ -71,9 +71,15 @@ class TestSystembolaget:
         cart_icon = self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div[2]/div/button")
         assert cart_icon.text == "1"
 
-    def test_search_name(self):
+    def test_search_product_nr(self):
         product = Systembolaget(self.driver)
-        product.search_for_product("Maison Sassy Cidre Organic")
+        product.search_for_product("13023")
+        articel = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']")
+        articel = articel.text
+        print(articel)
+        assert "13023" in articel
+
+    def test_search_name(self):
         self.driver.find_element(By.XPATH, "//button[@value='Sök']").click()
         self.driver.find_element(By.XPATH, "//body[1]/div[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[2]/div[1]/div[2]/a[1]/div[1]/div[2]/div[1]").click()
         name = self.driver.find_element(By.XPATH, "//div[@id='__next']//main//div//div//div//div//div//div//div//h1")
@@ -81,16 +87,11 @@ class TestSystembolaget:
         print(name)
         assert "Maison Sassy  Cidre Organic" in name
 
-    def test_search_product_nr(self):
-        articel = self.driver.find_element(By.XPATH, "//span[@font-family='robotoBold']")
-        articel = articel.text
-        print(articel)
-        assert "13023" in articel
 
     def test_alcohol_content(self):
         alcohol = Systembolaget(self.driver)
         alcohol.content = ("4%")
-        procent = self.driver.find_element(By.XPATH, "div[class ='css-1to8dtu e3whs8q0'] p:nth - child(3)")
+        procent = self.driver.find_element(By.XPATH, "//div[@id='__next']//main//div//div//div//div//div//div//div//div//div//p[contains(text(),'4 %')]")
         procent = procent.text
         print(procent)
         assert "4%" in procent
@@ -101,7 +102,6 @@ class TestSystembolaget:
         amount = self.driver.find_element(By.XPATH, "//a[@href='/varukorg/']//span//span[contains(text(),'2')]")
         amount = amount.text
         assert "2" in amount
-
 
     def test_demo(self):
         sku1 = Systembolaget(self.driver)
