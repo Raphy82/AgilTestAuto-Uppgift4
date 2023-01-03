@@ -32,10 +32,12 @@ class Systembolaget:
 
     '#Click on "Sofia"'
     def user_button(self):
-        self.driver.find_element(By.XPATH, "//*[contains(text(), 'Sofia')]").click()
+        self.driver.find_element(By.XPATH, "//button[@color='black']//p[contains(text(),'Sofia')]").click()
+        self.driver.find_element(By.XPATH, "// p[normalize - space() = 'Kontouppgifter']").click()
 
     '#Logout from website'
     def logout_button(self):
+        self.driver.find_element(By.XPATH, "//*[contains(text(), 'Sofia')]").click()
         self.driver.find_element(By.XPATH, "//button[@//*[@id='__next']/header/div/div/div/div[2]/div[2]/div/a[7]/p]").click()
 
     '#Find item on the website & open product page'
