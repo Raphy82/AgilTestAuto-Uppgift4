@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -40,6 +42,7 @@ class Systembolaget:
     def search_for_product(self, search):
         search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
         search_input.send_keys(search)
+        time.sleep(2)
         search_input.send_keys(Keys.ENTER)
         self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']").click()
 

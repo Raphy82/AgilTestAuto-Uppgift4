@@ -55,17 +55,11 @@ class TestSystembolaget:
     def test_add_wine_to_cart(self):
         ombud_button = self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/button[2]")
         ombud_button.click()
-
-        ombud_field = WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "//*[@id='modalId']/div/div/form/label/div/input"))
-        )
+        ombud_field = self.driver.find_element(By.XPATH, "//*[@id='modalId']/div/div/form/label/div/input")
         ombud_field.send_keys("lyrestad")
-
         self.driver.find_element(By.XPATH, "//*[@id='react-autowhatever-1-section-0-item-0']/div/span/strong").click()
-
         add_to_cart_button = self.driver.find_element(By.XPATH, "//button[@class='css-1fej1r5 ev9wvac0']")
         add_to_cart_button.click()
-
         cart_icon = self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div[2]/div/button")
         assert cart_icon.text == "Tillagd"
 
