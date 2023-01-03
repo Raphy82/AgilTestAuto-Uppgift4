@@ -95,6 +95,11 @@ class TestSystembolaget:
         print(procent)
         assert "4%" in procent
 
+    def test_add_cider_to_cart(self):
+        additem = self.driver.find_element(By.XPATH, "//button[normalize-space()='Lägg i varukorg']")
+        additem.click()
+
+
     def test_demo(self):
         sku1 = Systembolaget(self.driver)
         sku1.find_item("11903")
