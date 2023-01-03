@@ -91,8 +91,8 @@ class TestSystembolaget:
         assert "2" in amount
 
     def test_cart(self):
-        self.driver.find_element(By.XPATH, "//body/div[@id='__next']/header/div/div/div/div/div/button[1]").click()
-        vin = self.driver.find_element(By.XPATH, "//*[@id='__next']/header/div/div/div/div[2]/div[5]/div/div/div[2]/div[1]/div/div/div[2]/div/div[1]/a/div/h3/span[1]")
+        self.driver.find_element(By.XPATH, "//body/div[@id='__next']/header/div/div/div/div/div/button[@color='black']/span[1]").click()
+        vin = self.driver.find_element(By.XPATH, "//span[normalize-space()='Casa Emma']")
         vin = vin.text
         assert "Casa Emma" in vin
 
@@ -104,15 +104,15 @@ class TestSystembolaget:
         cider = cider.text
         assert "Maison Sassy" in cider
 
-        cider_pris = self.driver.find_element(By.XPATH, "//span[normalize-space()='21:90*']")
+        cider_pris = self.driver.find_element(By.XPATH, "//p[normalize-space()='22:10 /st']")
         cider_pris = cider_pris.text
-        assert "21:90" in cider_pris
+        assert "22:10" in cider_pris
 
         pant = self.driver.find_element(By.XPATH, "//p[normalize-space()='1:-']")
         pant = pant.text
         assert "1" in pant
 
-        tot_pris = self.driver.find_element(By.XPATH, "//p[normalize-space()='111:90']")
+        tot_pris = self.driver.find_element(By.XPATH, "//p[normalize-space()='112:10']")
         tot_pris = tot_pris.text
-        assert "111:90" in tot_pris
+        assert "112:10" in tot_pris
 
