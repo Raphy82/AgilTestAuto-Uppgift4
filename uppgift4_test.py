@@ -67,7 +67,7 @@ class TestSystembolaget:
         add_to_cart_button.click()
 
         cart_icon = self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div[2]/div/button")
-        assert cart_icon.text == "1"
+        assert cart_icon.text == "Tillagd"
 
     def test_search_name(self):
         product = Systembolaget(self.driver)
