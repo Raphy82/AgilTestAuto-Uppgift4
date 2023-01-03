@@ -41,6 +41,10 @@ class TestSystembolaget:
         button = self.driver.find_element(By.XPATH, "//p[normalize-space()='Logga in']").text
         assert "Logga in" in button
 
+    def test_tel(self):
+        tel = self.driver.find_element(By.XPATH, "// p[normalize - selfspace() = '+46700433078']")
+
+
     def test_product_nr(self):
         search_input = Systembolaget(self.driver)
         search_input.search_for_product("11903")
@@ -99,6 +103,16 @@ class TestSystembolaget:
         procent = procent.text
         print(procent)
         assert "4 %" in procent
+
+    def test_pant(self):
+        pant = self.driver.find_element(By.XPATH, "//body[1]/div[1]/main[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[4]/div[1]")
+        pant = pant.text
+        assert "1" in pant
+
+    def test_eko(self):
+        eko = self.driver.find_element(By.XPATH, "//p[normalize-space()='Ekologiskt']")
+        eko = eko.text
+        assert "EKOLOGISKT" in eko
 
     def test_add_cider_to_cart(self):
         additem = self.driver.find_element(By.XPATH, "//button[normalize-space()='Lägg i varukorg']")
