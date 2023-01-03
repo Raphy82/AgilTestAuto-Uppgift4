@@ -11,30 +11,25 @@ class Systembolaget:
     def __init__(self, driver):
         self.driver = driver
 
-    '#Login to the website, insert email'
-    def login_email(self):
-        email_field = self.driver.find_element(By.ID, "email-input")
-        email_field.send_keys("Grupp.1.Python@gmail.com")
+    '#Find item on the website & open product page'
+    def search_for_product(self, search):
+        search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
+        search_input.send_keys(search)
+        search_input.send_keys(Keys.ENTER)
+        self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']").click()
 
-    '#Login to the website, insert password'
-    def login_passwd(self):
-        password_field = self.driver.find_element(By.NAME, "Password")
-        password_field.send_keys("Grupp1Python")
-
-    '#Login to the website, click on login button'
-    def login_button(self):
-        login_button = self.driver.find_element(By.XPATH, "//button[@class='btn btn-primary button-submit']")
-        login_button.click()
-
-    '#Find item on the website'
+    '#Find item on the website, open product page'
     def find_item(self, skus):
         sku = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
         sku.send_keys(skus)
         sku.send_keys(Keys.ENTER)
-        self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']")
-        sku.click()
+        self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']").click()
+
 
     '#From product page, add item to basket'
-    def add_item(self):
-        self.driver.find_element(By.XPATH, "//button[normalize-space()='Lägg i varukorg']").click()
+    def add_item(self, buts):
+        self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/button[2]").click()
+        but = self.driver.find_element(By.XPATH, "//*[@id='modalId']/div/div/form/label/div/input")
+        but.send_keys(buts)
+        self.driver.find_element(By.XPATH, "//*[@id='react-autowhatever-1-section-0-item-0']/div/span/strong").click()
 
