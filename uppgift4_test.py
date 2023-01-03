@@ -55,22 +55,19 @@ class TestSystembolaget:
         assert response.status_code == 200
 
     def test_add_wine_to_cart(self):
-        add_home_delivery_button = self.driver.find_element(By.XPATH, "//div[@class='css-1krmxyt e3whs8q0']")
-        add_home_delivery_button.click()
+        ombud_button = self.driver.find_element(By.XPATH, "//div[@class='css-lioehz ewphso25']")
+        ombud_button.click()
         # Wait for the postal code field to be visible
-        postal_code_field = WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Ditt postnummer']"))
+        ombud_field = WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Sök ombud']"))
         )
-        postal_code_field.send_keys("12131")
+        ombud_field.send_keys("lyrestad")
+
+        valj_ombud_button = self.driver.find_element(By.XPATH, "//div[@class='false emejrsp0 css-1naf3kp e1uubc4q0']")
+        valj_ombud_button.click()
 
         add_to_cart_button = self.driver.find_element(By.XPATH, "//button[@class='css-1fej1r5 ev9wvac0']")
         add_to_cart_button.click()
-
-        postnummer_button = self.driver.find_element(By.XPATH, "//div[@class='false emejrsp0 css-1naf3kp e1uubc4q0']")
-        postnummer_button.click()
-
-        add_home_delivery = self.driver.find_element(By.XPATH, "//button[@class='css-1fej1r5 ev9wvac0']")
-        add_home_delivery.click()
 
         cart_icon = self.driver.find_element(By.XPATH, "//p[@class='css-l7e9hy enp2lf70']")
         assert cart_icon.text == "1"
