@@ -28,6 +28,14 @@ class Systembolaget:
         checkbox = self.driver.find_element(By.XPATH, "//button[@class='btn btn-primary button-submit']")
         checkbox.click()
 
+    '#Click on "Sofia"'
+    def user_button(self):
+        self.driver.find_element(By.XPATH, "//*[contains(text(), 'Sofia')]").click()
+
+    '#Logout from website'
+    def logout_button(self):
+        self.driver.find_element(By.XPATH, "//button[@//*[@id='__next']/header/div/div/div/div[2]/div[2]/div/a[7]/p]").click()
+
     '#Find item on the website & open product page'
     def search_for_product(self, search):
         search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")

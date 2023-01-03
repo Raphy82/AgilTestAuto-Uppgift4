@@ -16,15 +16,13 @@ class TestSystembolaget:
         login1 = Systembolaget(self.driver)
         login1.login_email("Grupp.1.Python@gmail.com")
         username = self.driver.find_element(By.ID, "email-input")
-        username = username.text
-        assert "Grupp.1.Python@gmail.com" in username
+        assert username.get_attribute("value") == "Grupp.1.Python@gmail.com"
 
     def test_password(self):
         name1 = Systembolaget(self.driver)
         name1.login_passwd("Grupp1Python")
         password = self.driver.find_element(By.NAME, "Password")
-        password = password.text
-        assert "Grupp1Python" in password
+        assert password.get_attribute("value") == "Grupp1Python"
 
     def test_product_nr(self):
         search_input = Systembolaget(self.driver)
@@ -69,7 +67,7 @@ class TestSystembolaget:
         add_to_cart_button.click()
 
         cart_icon = self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div[2]/div/button")
-        assert cart_icon.text == "1"
+        assert cart_icon.text == "Tillagd"
 
     def test_search_product_nr(self):
         product = Systembolaget(self.driver)
