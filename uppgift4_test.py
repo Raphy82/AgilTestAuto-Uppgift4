@@ -55,21 +55,20 @@ class TestSystembolaget:
         assert response.status_code == 200
 
     def test_add_wine_to_cart(self):
-        ombud_button = self.driver.find_element(By.XPATH, "//div[@class='css-lioehz ewphso25']")
+        ombud_button = self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/button[2]")
         ombud_button.click()
-        # Wait for the postal code field to be visible
+
         ombud_field = WebDriverWait(self.driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Sök ombud']"))
+            EC.presence_of_element_located((By.XPATH, "//*[@id='modalId']/div/div/form/label/div/input"))
         )
         ombud_field.send_keys("lyrestad")
 
-        valj_ombud_button = self.driver.find_element(By.XPATH, "//div[@class='false emejrsp0 css-1naf3kp e1uubc4q0']")
-        valj_ombud_button.click()
+        self.driver.find_element(By.XPATH, "//*[@id='react-autowhatever-1-section-0-item-0']/div/span/strong").click()
 
         add_to_cart_button = self.driver.find_element(By.XPATH, "//button[@class='css-1fej1r5 ev9wvac0']")
         add_to_cart_button.click()
 
-        cart_icon = self.driver.find_element(By.XPATH, "//p[@class='css-l7e9hy enp2lf70']")
+        cart_icon = self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div[2]/div/button")
         assert cart_icon.text == "1"
 
     def test_search_name(self):
