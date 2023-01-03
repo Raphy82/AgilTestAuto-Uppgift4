@@ -20,23 +20,26 @@ class TestSystembolaget:
         login2 = Systembolaget(self.driver)
         login2.login_passwd("Grupp1Python")
 
-    def test_konto(self):
+    def test_account(self):
         self.driver.find_element(By.XPATH, "//body[1]/div[1]/header[1]/div[1]/div[1]/div[1]/div[2]/div[2]/button[1]").click()
         self.driver.find_element(By.XPATH, "//header[@class='css-1y17g3i e3whs8q0']//a[6]").click()
         fornamn = self.driver.find_element(By.XPATH, "//p[@data-hj-suppress='true'][normalize-space()='Sofia']").text
         assert "Sofia" in fornamn
 
-        epost = self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[3]/div/div/div[3]/div[2]/p").text
+        adress = self.driver.find_element(By.XPATH, "//body[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[4]").text
+        assert "Nybohovsbacken 99" in adress
+
+        epost = self.driver.find_element(By.XPATH, "//p[normalize-space()='Grupp.1.Python@gmail.com']").text
         assert "Grupp.1.Python@gmail.com" in epost
 
-        telefonnummer = self.driver.find_element(By.XPATH, "// *[ @ id = '__next'] / main / div[3] / div / div / div[3] / div[3] / p").text
+        telefonnummer = self.driver.find_element(By.XPATH, "//p[normalize-space()='+46700433078']").text
         assert "+46700433078" in telefonnummer
 
     def test_logout(self):
-        logout = Systembolaget(self.driver)
-        logout.logout_button()
-        button = self.driver.find_element(By.XPATH, "//button[@class='css-14d3ag5 e1yk5khk0']").click()
-        assert "Logga ut" in button
+        self.driver.find_element(By.XPATH, "//*[@id='__next']/header/div/div/div/div[2]/div[2]/button/p").click()
+        self.driver.find_element(By.XPATH, "//*[@id='__next']/header/div/div/div/div[2]/div[2]/div/a[7]/p").click()
+        button = self.driver.find_element(By.XPATH, "//p[normalize-space()='Logga in']").text
+        assert "Logga in" in button
 
     def test_product_nr(self):
         search_input = Systembolaget(self.driver)
