@@ -11,6 +11,23 @@ class Systembolaget:
     def __init__(self, driver):
         self.driver = driver
 
+    '#Login to the website, insert email'
+    def login_email(self, logins):
+        login = self.driver.find_element(By.NAME, "Username")
+        login.send_keys(logins)
+        login.send_keys(Keys.ENTER)
+
+    '#Login to the website, insert password'
+    def login_passwd(self, names):
+        name = self.driver.find_element(By.NAME, "Password")
+        name.send_keys(names)
+        name.send_keys(Keys.ENTER)
+
+    '#Login to the website, click on login button'
+    def login_button(self):
+        checkbox = self.driver.find_element(By.XPATH, "//button[@class='btn btn-primary button-submit']")
+        checkbox.click()
+
     '#Find item on the website & open product page'
     def search_for_product(self, search):
         search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
