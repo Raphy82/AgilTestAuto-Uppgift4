@@ -86,7 +86,7 @@ class TestSystembolaget:
     def test_add_cider_to_cart(self):
         additem = self.driver.find_element(By.XPATH, "//button[normalize-space()='Lägg i varukorg']")
         additem.click()
-        amount = self.driver.find_element(By.XPATH, "//button[@color='black']//span//span[contains(text(),'2')")
+        amount = self.driver.find_element(By.XPATH, "//*[@id='__next']/header/div/div/div/div[2]/div[5]/button/span/span")
         amount = amount.text
         assert "2" in amount
 
