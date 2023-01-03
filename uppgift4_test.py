@@ -73,16 +73,16 @@ class TestSystembolaget:
 
     def test_search_name(self):
         product = Systembolaget(self.driver)
-        product.byname("Maison Sassy  Cidre Organic")
-        name = self.driver.find_element(By.XPATH, " ")
+        product.search_for_product("Maison Sassy Cidre Organic")
+        self.driver.find_element(By.XPATH, "//button[@value='Sök']").click()
+        self.driver.find_element(By.XPATH, "//body[1]/div[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[2]/div[1]/div[2]/a[1]/div[1]/div[2]/div[1]").click()
+        name = self.driver.find_element(By.XPATH, "//div[@id='__next']//main//div//div//div//div//div//div//div//h1")
         name = name.text
         print(name)
         assert "Maison Sassy  Cidre Organic" in name
 
     def test_search_product_nr(self):
-        product = Systembolaget(self.driver)
-        product.bynr("13023")
-        articel = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']")
+        articel = self.driver.find_element(By.XPATH, "//span[@font-family='robotoBold']")
         articel = articel.text
         print(articel)
         assert "13023" in articel
