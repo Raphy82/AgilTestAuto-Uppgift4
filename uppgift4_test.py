@@ -80,13 +80,10 @@ class TestSystembolaget:
         assert "13023" in articel
 
     def test_search_name(self):
-        self.driver.find_element(By.XPATH, "//button[@value='Sök']").click()
-        self.driver.find_element(By.XPATH, "//body[1]/div[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[2]/div[1]/div[2]/a[1]/div[1]/div[2]/div[1]").click()
         name = self.driver.find_element(By.XPATH, "//div[@id='__next']//main//div//div//div//div//div//div//div//h1")
         name = name.text
         print(name)
         assert "Maison Sassy  Cidre Organic" in name
-
 
     def test_alcohol_content(self):
         alcohol = Systembolaget(self.driver)
