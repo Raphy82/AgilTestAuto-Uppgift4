@@ -42,7 +42,8 @@ class TestSystembolaget:
         assert "Logga in" in button
 
     def test_tel(self):
-        tel = self.driver.find_element(By.XPATH, "// p[normalize - selfspace() = '+46700433078']")
+        tel = self.driver.find_element(By.XPATH, "// p[normalize - selfspace() = '+46700433078']").click()
+        
 
 
     def test_product_nr(self):
