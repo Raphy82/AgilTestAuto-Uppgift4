@@ -41,9 +41,15 @@ class TestSystembolaget:
         button = self.driver.find_element(By.XPATH, "//p[normalize-space()='Logga in']").text
         assert "Logga in" in button
 
-    def test_tel(self):
-        tel = self.driver.find_element(By.XPATH, "// p[normalize - selfspace() = '+46700433078']").click()
-        
+ #   def test_tel(self):
+ #       tel = self.driver.find_element(By.XPATH, "// p[normalize - selfspace() = '+46700433078']")
+
+    def test_filterland(self):
+        self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/a[1]/p").click()
+        self.driver.find_element(By.XPATH, "//body/div[@id='__next']/main/div[@class='css-1w5ef0q e3whs8q0']/div[@class='css-ek71oe e3whs8q0']/div[@class='css-4bovj e3whs8q0']/div[@class='css-fhi9d0 e3whs8q0']/div[@class='css-faini1 e17wolzc0']/div[@class='css-14k4i5l e3whs8q0']/div[@class='css-1v0mtzm e1clsla60']/div[@class='css-15b9a4w e3whs8q0']/div[3]/button[1]//*[name()='svg']").click()
+        self.driver.find_element(By.XPATH, "//p[normalize-space()='3992']").click()
+        search_land = self.driver.find_element(By.XPATH, "//h1[normalize-space()='Italien']").text
+        assert "Italien" in search_land
 
 
     def test_product_nr(self):
