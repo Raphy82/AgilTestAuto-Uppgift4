@@ -58,22 +58,25 @@ class TestSystembolaget:
 
 
     def test_findchamp(self):
-        self.driver.find_element(By.XPATH, "//img[@alt='Avsändare – Till startsidan']").click()
-        search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
-        search_input.send_keys("Dom Perignon")
-        search_input.send_keys(Keys.ENTER)
-        drink_price = self.driver.find_element(By.XPATH, "//p[@class='css-1kvpmze enp2lf70']").text
-        assert "2 141:-" in drink_price
-
-
-#    def test_findvodka(self):
 #        self.driver.find_element(By.XPATH, "//img[@alt='Avsändare – Till startsidan']").click()
-#        search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
-#        search_input.send_keys("Absolut Vodka")
-#        search_input.send_keys(Keys.ENTER)
-#        self.driver.find_element(By.XPATH, "//p[@class='css-199rqg5 enp2lf70']").click()
-#        find_store = self.driver.find_element(By.XPATH, "//div[@class='css-a9j6yb e1d51e771']")
-#        assert "Nordstan, Göteborg" in find_store
+        search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
+        time.sleep(2)
+        search_input.send_keys("7428")
+        search_input.send_keys(Keys.ENTER)
+        drink_price = self.driver.find_element(By.XPATH, "//p[normalize-space()='2 141:-']").text
+        assert "2 141:-" in drink_price
+        time.sleep(2)
+
+
+    def test_findvodka(self):
+        self.driver.find_element(By.XPATH, "//img[@alt='Avsändare – Till startsidan']").click()
+        time.sleep(2)
+        search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
+        search_input.send_keys("88")
+        search_input.send_keys(Keys.ENTER)
+        find_volume = self.driver.find_element(By.XPATH, "//p[normalize-space()='700 ml']").text
+        assert "700 ml" in find_volume
+        time.sleep(2)
 
 
     def test_product_nr(self):
