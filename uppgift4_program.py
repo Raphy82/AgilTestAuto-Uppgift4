@@ -31,4 +31,3 @@ class Systembolaget:
         search_input.send_keys(search)
         time.sleep(2)
         search_input.send_keys(Keys.ENTER)
-        self.driver.find_element(By.XPATH, "//p[@class='css-w9tb7l e3wog7r1']").click()

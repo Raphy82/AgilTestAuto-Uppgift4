@@ -45,8 +45,6 @@ class TestSystembolaget:
         button = self.driver.find_element(By.XPATH, "//p[normalize-space()='Logga in']").text
         assert "Logga in" in button
 
-#   def test_tel(self):
-#       tel = self.driver.find_element(By.XPATH, "// p[normalize - selfspace() = '+46700433078']")
 
     def test_filterland(self):
         self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/a[1]/p").click()
@@ -84,6 +82,7 @@ class TestSystembolaget:
     def test_product_nr(self):
         search_input = Systembolaget(self.driver)
         search_input.search_for_product("11903")
+        self.driver.find_element(By.XPATH, "//body/div/main/div/div/div/div/div/div/div[@display='grid']/a/div/div[1]/div[1]").click()
         product_nr = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']").text
         assert "11903" in product_nr
 
@@ -122,6 +121,7 @@ class TestSystembolaget:
     def test_search_product_nr(self):
         product = Systembolaget(self.driver)
         product.search_for_product("13023")
+        self.driver.find_element(By.XPATH, "//body[1]/div[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[2]/div[1]/div[2]/a[1]/div[1]/div[2]/div[1]").click()
         articel = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']")
         articel = articel.text
         print(articel)
