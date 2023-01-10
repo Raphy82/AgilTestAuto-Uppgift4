@@ -56,7 +56,6 @@ class TestSystembolaget:
 
 
     def test_findchamp(self):
-#        self.driver.find_element(By.XPATH, "//img[@alt='Avsändare – Till startsidan']").click()
         search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
         time.sleep(2)
         search_input.send_keys("7428")
