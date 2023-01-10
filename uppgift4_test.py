@@ -66,6 +66,16 @@ class TestSystembolaget:
         assert "2 141:-" in drink_price
 
 
+#    def test_findvodka(self):
+#        self.driver.find_element(By.XPATH, "//img[@alt='Avsändare – Till startsidan']").click()
+#        search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
+#        search_input.send_keys("Absolut Vodka")
+#        search_input.send_keys(Keys.ENTER)
+#        self.driver.find_element(By.XPATH, "//p[@class='css-199rqg5 enp2lf70']").click()
+#        find_store = self.driver.find_element(By.XPATH, "//div[@class='css-a9j6yb e1d51e771']")
+#        assert "Nordstan, Göteborg" in find_store
+
+
     def test_product_nr(self):
         search_input = Systembolaget(self.driver)
         search_input.search_for_product("11903")
