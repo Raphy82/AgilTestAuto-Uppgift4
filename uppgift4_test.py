@@ -69,6 +69,7 @@ class TestSystembolaget:
 
 
     def test_findvodka(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Rensa']").click()
         self.driver.find_element(By.XPATH, "//img[@alt='Avsändare – Till startsidan']").click()
         time.sleep(2)
         search_input = self.driver.find_element(By.XPATH, "//input[@placeholder='Sök dryck, land, hållbart val...']")
@@ -77,18 +78,17 @@ class TestSystembolaget:
         find_volume = self.driver.find_element(By.XPATH, "//p[normalize-space()='700 ml']").text
         assert "700 ml" in find_volume
         time.sleep(2)
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Rensa']").click()
 
 
     def test_product_nr(self):
         search_input = Systembolaget(self.driver)
         search_input.search_for_product("11903")
-        product_nr = self.driver.find_element(By.XPATH,
-                                              "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']").text
+        product_nr = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']").text
         assert "11903" in product_nr
 
     def test_product_name(self):
-        product_name = self.driver.find_element(By.XPATH,
-                                                "//div[@class='css-dahppd e3whs8q0']//p[@class='css-1rw23u7 enp2lf70']").text
+        product_name = self.driver.find_element(By.XPATH, "//div[@class='css-dahppd e3whs8q0']//p[@class='css-1rw23u7 enp2lf70']").text
         assert product_name == "Casa Emma"
 
     def test_product_price(self):
@@ -109,23 +109,20 @@ class TestSystembolaget:
         assert response.status_code == 200
 
     def test_add_wine_to_cart(self):
-        ombud_button = self.driver.find_element(By.XPATH,
-                                                "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/button[2]")
+        ombud_button = self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/button[2]")
         ombud_button.click()
         ombud_field = self.driver.find_element(By.XPATH, "//*[@id='modalId']/div/div/form/label/div/input")
         ombud_field.send_keys("lyrestad")
         self.driver.find_element(By.XPATH, "//*[@id='react-autowhatever-1-section-0-item-0']/div/span/strong").click()
         add_to_cart_button = self.driver.find_element(By.XPATH, "//button[@class='css-1fej1r5 ev9wvac0']")
         add_to_cart_button.click()
-        cart_icon = self.driver.find_element(By.XPATH,
-                                             "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div[2]/div/button")
+        cart_icon = self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/div/div[2]/div[2]/div/button")
         assert cart_icon.text == "Tillagd"
 
     def test_search_product_nr(self):
         product = Systembolaget(self.driver)
         product.search_for_product("13023")
-        articel = self.driver.find_element(By.XPATH,
-                                           "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']")
+        articel = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']")
         articel = articel.text
         print(articel)
         assert "13023" in articel
@@ -137,15 +134,13 @@ class TestSystembolaget:
         assert "Maison Sassy" in name
 
     def test_alcohol_content(self):
-        procent = self.driver.find_element(By.XPATH,
-                                           "//div[@id='__next']//main//div//div//div//div//div//div//div//div//div//p[contains(text(),'4 %')]")
+        procent = self.driver.find_element(By.XPATH, "//div[@id='__next']//main//div//div//div//div//div//div//div//div//div//p[contains(text(),'4 %')]")
         procent = procent.text
         print(procent)
         assert "4 %" in procent
 
     def test_pant(self):
-        pant = self.driver.find_element(By.XPATH,
-                                        "//body[1]/div[1]/main[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[4]/div[1]")
+        pant = self.driver.find_element(By.XPATH, "//body[1]/div[1]/main[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[4]/div[1]")
         pant = pant.text
         assert "1" in pant
 
@@ -157,14 +152,12 @@ class TestSystembolaget:
     def test_add_cider_to_cart(self):
         additem = self.driver.find_element(By.XPATH, "//button[normalize-space()='Lägg i varukorg']")
         additem.click()
-        amount = self.driver.find_element(By.XPATH,
-                                          "//*[@id='__next']/header/div/div/div/div[2]/div[5]/button/span/span")
+        amount = self.driver.find_element(By.XPATH, "//*[@id='__next']/header/div/div/div/div[2]/div[5]/button/span/span")
         amount = amount.text
         assert "2" in amount
 
     def test_cart(self):
-        self.driver.find_element(By.XPATH,
-                                 "//body/div[@id='__next']/header/div/div/div/div/div/button[@color='black']/span[1]").click()
+        self.driver.find_element(By.XPATH, "//body/div[@id='__next']/header/div/div/div/div/div/button[@color='black']/span[1]").click()
         vin = self.driver.find_element(By.XPATH, "//span[normalize-space()='Casa Emma']")
         vin = vin.text
         assert "Casa Emma" in vin
