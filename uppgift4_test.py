@@ -23,14 +23,12 @@ class TestSystembolaget:
         login2.login_passwd("Grupp1Python")
 
     def test_account(self):
-        self.driver.find_element(By.XPATH,
-                                 "//body[1]/div[1]/header[1]/div[1]/div[1]/div[1]/div[2]/div[2]/button[1]").click()
+        self.driver.find_element(By.XPATH, "//body[1]/div[1]/header[1]/div[1]/div[1]/div[1]/div[2]/div[2]/button[1]").click()
         self.driver.find_element(By.XPATH, "//header[@class='css-1y17g3i e3whs8q0']//a[6]").click()
         fornamn = self.driver.find_element(By.XPATH, "//p[@data-hj-suppress='true'][normalize-space()='Sofia']").text
         assert "Sofia" in fornamn
 
-        adress = self.driver.find_element(By.XPATH,
-                                          "//body[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[4]").text
+        adress = self.driver.find_element(By.XPATH, "//body[1]/div[1]/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[4]").text
         assert "Nybohovsbacken 99" in adress
 
         epost = self.driver.find_element(By.XPATH, "//p[normalize-space()='Grupp.1.Python@gmail.com']").text
@@ -40,16 +38,16 @@ class TestSystembolaget:
         assert "+46700433078" in telefonnummer
 
     def test_logout(self):
-        self.driver.find_element(By.XPATH, "//*[@id='__next']/header/div/div/div/div[2]/div[2]/button/p").click()
+        self.driver.find_element(By.XPATH, "//body[1]/div[1]/header[1]/div[1]/div[1]/div[1]/div[2]/div[2]/button[1]").click()
         self.driver.find_element(By.XPATH, "//*[@id='__next']/header/div/div/div/div[2]/div[2]/div/a[7]/p").click()
-        button = self.driver.find_element(By.XPATH, "//p[normalize-space()='Logga in']").text
+        button = self.driver.find_element(By.XPATH, "//span[normalize-space()='Logga in']").text
         assert "Logga in" in button
 
 
     def test_filterland(self):
-        self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div/div[2]/a[1]/p").click()
-        self.driver.find_element(By.XPATH,
-                                 "//body/div[@id='__next']/main/div[@class='css-1w5ef0q e3whs8q0']/div[@class='css-ek71oe e3whs8q0']/div[@class='css-4bovj e3whs8q0']/div[@class='css-fhi9d0 e3whs8q0']/div[@class='css-faini1 e17wolzc0']/div[@class='css-14k4i5l e3whs8q0']/div[@class='css-1v0mtzm e1clsla60']/div[@class='css-15b9a4w e3whs8q0']/div[3]/button[1]//*[name()='svg']").click()
+        time.sleep(4)
+        self.driver.find_element(By.XPATH, "//*[@id='sb-ab-test-actionmenu']/div/a[1]").click()
+        self.driver.find_element(By.XPATH, "//*[@id='__next']/main/div[2]/div[2]/div/div[2]/div[1]/div/div/div/div[3]/button/div/p").click()
         self.driver.find_element(By.XPATH, "//p[@class='css-493r10 enp2lf70'][normalize-space()='Italien']").click()
         search_land = self.driver.find_element(By.XPATH, "//h1[normalize-space()='Italien']").text
         assert "Italien" in search_land
@@ -101,7 +99,7 @@ class TestSystembolaget:
         assert price in [89.0, 118.67]
 
     def test_product_image_loads_correctly(self):
-        image_element = self.driver.find_element(By.XPATH, "//img[@class='css-0 e53gfhp1']")
+        image_element = self.driver.find_element(By.XPATH, "//button[@display='block']//img[@alt='Produktbild för Casa Emma']")
         image_src = image_element.get_attribute("src")
         response = requests.get(image_src)
         assert response.status_code == 200
