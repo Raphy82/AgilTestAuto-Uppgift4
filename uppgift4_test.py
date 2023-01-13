@@ -10,7 +10,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 '# Call the setup fixture'
 
-
 @pytest.mark.usefixtures("setup")
 class TestSystembolaget:
 
