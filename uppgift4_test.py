@@ -73,12 +73,14 @@ class TestSystembolaget:
         assert "700 ml" in find_volume
         time.sleep(2)
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Rensa']").click()
+        time.sleep(2)
 
 
     def test_product_nr(self):
         search_input = Systembolaget(self.driver)
         search_input.search_for_product("11903")
-        self.driver.find_element(By.XPATH, "//body/div/main/div/div/div/div/div/div/div[@display='grid']/a/div/div[1]/div[1]").click()
+        self.driver.find_element(By.XPATH, "//p[normalize-space()='Casa Emma']").click()
+        #self.driver.find_element(By.XPATH, "//body/div/main/div/div/div/div/div/div/div[@display='grid']/a/div/div[1]/div[1]").click()
         product_nr = self.driver.find_element(By.XPATH, "//div[@class='css-8zpafe e3whs8q0']//p[@class='css-12l74ml er6ap680']").text
         assert "11903" in product_nr
 
