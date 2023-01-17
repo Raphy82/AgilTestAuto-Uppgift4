@@ -5,6 +5,7 @@ import time
 from uppgift4_program import Systembolaget
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromiumService
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
